@@ -32,7 +32,6 @@ int math(int arr[]) {
       current--;
     }
   }
-  printf("%f %d\n",stack[0], (int)stack[0]);
   if (stack[0] - (int)stack[0] == 0) {
     return stack[0];
   } else {
@@ -40,11 +39,13 @@ int math(int arr[]) {
   }
 }
 
+//Rearrange and print reverse polish notation in normal notation  
 void printp() {
-                       //robin fag
+        
 }
 
 int main() {
+  //testcase for the math function, should output -1;
   int arr[7] = {1,2,3,4,Div,Plus,Plus};
   printf("%d\n", math(arr));
 }
