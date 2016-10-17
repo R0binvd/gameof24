@@ -4,8 +4,9 @@ int math() {
 
 }
 
+//Rearrange and print reverse polish notation in normal notation  
 void printp() {
-                       //robin fag
+        
 }
 
 int main() {
