@@ -5,7 +5,7 @@
 #define Times 12
 #define Div 13
 
-char printedString[20]  //I'll make this one global so I can check if the combination I'm printing is the one I JUST printed, since the two formulas overlap sometimes
+int printedString[20]  //I'll make this one global so I can check if the combination I'm printing is the one I JUST printed, since the two formulas overlap sometimes
 
 void printLayout1(int printable[]){    //I first place the parenthesis where needed, then fill the blanks with a for loop
   int i, j=0, upto=7;
