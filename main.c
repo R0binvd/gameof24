@@ -59,7 +59,7 @@ int math(int arr[]) {
 
 //Rearrange and print reverse polish notation in normal notation, input is a 7 elements array 
 void printp(int sequence[]) {
-     if(sequence[3]>=10)  printLayout1(sequence);     //print the ab?c?d? form
+     if(sequence[4]>=10)  printLayout1(sequence);     //print the ab?c?d? form
      else printLayout2(sequence);                     //print the ab?cd?? form
 }
 
