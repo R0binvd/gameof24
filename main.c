@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#define Plus 10
-#define Min 11
-#define Times 12
+#define Add 10
+#define Sub 11
+#define Mul 12
 #define Div 13
 
 int printedString[20];  //I'll make this one global so I can check if the combination I'm printing is the one I JUST printed, since the two formulas overlap sometimes
@@ -56,13 +56,13 @@ int math(int arr[]) {
       current++;
     } else {
       switch (arr[i]){
-        case Plus:
+        case Add:
           stack[current-2] = stack[current-2] + stack[current-1];
         break;
-        case Min:
+        case Sub:
           stack[current-2] = stack[current-2] - stack[current-1];
         break;
-        case Times:
+        case Mul:
           stack[current-2] = stack[current-2] * stack[current-1];
         break;
         case Div:
@@ -103,6 +103,6 @@ void printp(int sequence[]) {
 
 int main() {
   //testcase for the math function, should output -1;
-  int arr[7] = {1,2,3,4,Div,Plus,Plus};
+  int arr[7] = {1,2,3,4,Div,Add,Add};
   printf("%d\n", math(arr));
 }
