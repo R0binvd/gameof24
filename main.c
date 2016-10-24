@@ -52,7 +52,7 @@ int math(int arr[]) {
   float stack[4];
   for (i=0; i<7; i++) {
     if (arr[i] < 10) {
-      stack[i] = arr[i];
+      stack[current] = arr[i];
       current++;
     } else {
       switch (arr[i]){
