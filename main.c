@@ -88,13 +88,13 @@ void printp(int sequence[]) {
          if(printedString[i]<10)  printf("%c", printedString[i]+48);
          else{
           switch(printedString[i]){
-            case 10: printf("+");
+            case Add: printf("+");
             break;
-            case 11: printf("-");
+            case Sub: printf("-");
             break;
-            case 12: printf("*");
+            case Mul: printf("*");
             break;
-            case 13: printf("/");
+            case Div: printf("/");
             break;
           }
          }
