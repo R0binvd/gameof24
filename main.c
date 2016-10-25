@@ -124,9 +124,9 @@ void gennumbers(int input[4], int n) {
       arr [4] = tmp % 4 + 10;
       tmp /= 4;
       arr [6] = tmp % 4 + 10;
-      printp(arr);
+      if (math(arr)==24) printp(arr);              //ab?c?d?
       swap(arr + 4, arr + 5);
-      printp(arr);
+      if (math(arr)==24) printp(arr);              //ab?cd??
     }
   } else {
     for (j=n; j<4; j++) {
@@ -138,10 +138,6 @@ void gennumbers(int input[4], int n) {
 }
 
 int main() {
-  //testcase for the math function, should output -1;
-  /*int arr[7] = {1,2,3,4,Div,Add,Add};*/
-  /*printf("%d\n", math(arr));*/
-  /*gennumbers();*/
   int input[4];
   int i;
   for (i=0; i<4; i++)
