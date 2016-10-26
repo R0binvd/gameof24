@@ -64,16 +64,16 @@ int math(int arr[]) {
     } else {
       switch (arr[i]){
         case Add:
-          stack[current-2] = stack[current-2] + stack[current-1];
+          stack[current-2] += stack[current-1];
         break;
         case Sub:
-          stack[current-2] = stack[current-2] - stack[current-1];
+          stack[current-2] -= stack[current-1];
         break;
         case Mul:
-          stack[current-2] = stack[current-2] * stack[current-1];
+          stack[current-2] *= stack[current-1];
         break;
         case Div:
-          stack[current-2] = stack[current-2] / stack[current-1];
+          stack[current-2] /= stack[current-1];
       
       }
       current--;
