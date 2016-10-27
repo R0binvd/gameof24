@@ -1,19 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*simple #define to go from {11..14} to {+,=,*,/}*/
 #define NumtoChar(x) ((x==11) ? '+' : (x==12) ? '-' : (x==13) ? '*' : '/')
 #define MaxNum 10
 #define Add 11
 #define Sub 12
 #define Mul 13
 #define Div 14
-
-/*node either has just a int value, or an operator and a left and right node*/
-struct node {
-  int value;
-  struct node *left;
-  struct node *right;
-} node;
 
 void swap(int *a, int *b) {
   int swap;
@@ -24,34 +18,29 @@ void swap(int *a, int *b) {
 }
 
 /*from postfix to infix tree. return a pointer to the top of the tree*/
-struct node *conv(int **stack) {
-  struct node *x;
+void conv(int **stack, int tree[], int index) {  
   if (**stack > 10) {
-    x = malloc(sizeof(struct node));
-    x -> value = **stack;
-    *stack = *stack - 1;
-    x -> right = conv(stack);
-    *stack = *stack - 1;
-    x -> left = conv(stack);
-    return x;
+    tree[index] = **stack;
+    *stack -= 1;
+    conv (stack, tree, index*2);
+    *stack -= 1;
+    conv (stack, tree, index*2+1);
   } else {
-    x = malloc(sizeof(struct node));
-    x -> value = **stack;
-    return x;
+    tree[index] = **stack;
   }
 }
 
 
 /*from infix tree to stdout*/
-void printp(struct node x) {
-  if (x.value >= MaxNum) {
+void printp(int tree[], int index) {
+  if (tree[index] >= MaxNum) {
     putchar('(');
-    printp(*x.left);
-    putchar(NumtoChar(x.value));
-    printp(*x.right);
+    printp(tree, index*2+1);
+    putchar(NumtoChar(tree[index]));
+    printp(tree, index*2);
     putchar(')');
   } else {
-    printf("%d", x.value);
+    printf("%d", tree[index]);
   }
 }
 
@@ -91,7 +80,7 @@ int math(int arr[]) {
 
 void gennumbers(int input[4], int n) {
   int j;
-  struct node *x;
+  int x[16];
   if (n==4) {
     int operators;
     for (operators=0; operators<64; operators++) {
@@ -105,17 +94,16 @@ void gennumbers(int input[4], int n) {
       tmp /= 4;
       arr [6] = tmp % 4 + Add;
       if (math(arr)==24) {
-        x = conv(&ptr);
-        printp(*x);              //ab?c?d?
-        //todo free the tree
+        conv(&ptr, x, 1);
+        printp(x, 1);              //ab?c?d?
         exit(0);
       }
       swap(arr + 4, arr + 5);
-      /*if (math(arr)==24) {*/
-        /*x = conv(arr);*/
-        /*printp(x);              //ab?cd??*/
-        /*exit(0);*/
-      /*}*/
+      if (math(arr)==24) {
+        conv(&ptr, x, 1);
+        printp(x, 1);              //ab?cd??
+        exit(0);
+      }
     }
   } else {
     for (j=n; j<4; j++) {
